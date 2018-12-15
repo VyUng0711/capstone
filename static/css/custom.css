@@ -1,0 +1,26 @@
+a>div { display: none; }
+a:hover>div { display: block; }
+
+.preview{
+    display: none;
+    width: 100%;
+}
+
+a:hover + .preview,.preview:hover{
+    display: block;
+    position: relative;
+    z-index: 100;
+}
+
+.tiptext {
+    color:#069;
+    cursor:pointer;
+}
+.description {
+    display:none;
+    position:absolute;
+    border:1px solid #000;
+    width:400px;
+    height:400px;
+}
+

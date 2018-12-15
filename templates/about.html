@@ -1,0 +1,402 @@
+{% extends "layout.html" %}
+{% block page_title %}About{% endblock %}
+
+{% block body %}
+    {{ super() }}
+
+<!--<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>-->
+<!--<a class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="bottom" data-original-title="Title" data-trigger="hover">Popover with data-trigger</a>-->
+    <!--<a class="tiptext">A link-->
+        <!--<iframe class="description" src="http://en.wikipedia.org/"></iframe>-->
+    <!--</a>-->
+    <!--<p> This live preview for <a href="http://en.wikipedia.org/">Wikipedia</a>-->
+    <!--<div class="preview">-->
+        <!--<iframe src="http://en.wikipedia.org/" width = "500px" height = "500px">-->
+
+        <!--</iframe>-->
+    <!--</div> remains open on mouseover. </p>-->
+
+    <a name="content"></a>
+    <h3>Content</h3>
+
+    <ul>
+        <li>
+            <a href="#overview">Overview</a>
+        </li>
+        <li>
+            <a href="#technology">Technology</a>
+        </li>
+        <li>
+            <a href="#literature">Literature</a>
+        </li>
+        <!--<li>-->
+            <!--<a href="#references">References</a>-->
+        <!--</li>-->
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+
+    </ul>
+
+
+    <a name="overview"></a>
+    <hr>
+    <div class="row">
+        <div class="col-md-9">
+            <h2> What is "Creative Generator"? </h2>
+
+        </div>
+        <div class="col-md-3">
+            <a href="#content">Back to top</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                This is the Capstone Project created during my senior year at <a href="https://www.minerva.kgi.edu/">Minerva</a>.
+            </p>
+            <p>
+                Given the open question “How can machine learning facilitate creative thinking - the process of generating
+            new ideas?”, the goal of this project is to illustrate how a model could be trained to recognize
+            ways in which words or concepts are connected and generate suggestions based on a
+            string of input to foster the process of brainstorming, generating creative ideas and solving problems.
+            </p>
+
+            <p>
+                This tool brings about an interesting application of AI in creative study, because this emulates the technique
+            proven to be an indicator of creative potential called divergent thinking. The goal of divergent thinking is
+            to generate many different ideas about a topic in a short period of time by breaking a topic down into its
+            various component parts in order to gain insight about the various aspects of the topic. Divergent thinking
+            typically occurs in a spontaneous, free-flowing manner, such that the ideas are generated in a random,
+            unorganized fashion. This process usually takes a long time, resources and efforts because human’s imagination
+            is limited. Therefore the tool will help a lot in this step. After that,  following divergent thinking,
+            the ideas and information will be organized by users using convergent thinking; i.e., putting the various
+            ideas back together in some organized, structured way.
+            </p>
+            <h4>Some features: </h4>
+            <ul>
+                <li>Users can query a prompt and receive suggestions without logging in </li>
+                <li>Users can manage their notes, past queries and favourite suggestions by creating an account </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4">
+            <img
+           src="{{ url_for('static', filename='img/divergent-thinking.png') }}"
+           width="320"
+           height="320"
+           border="0"
+
+           alt="Divergent Thinking"
+           title="Divergent Thinking">
+            <p align="center">
+                <i>Image from </i>
+                <a href="https://www.kisspng.com/png-divergent-thinking-thought-design-thinking-innovat-1328955/">
+                    <i>www.kisspng.com</i>
+                </a>
+            </p>
+
+        </div>
+    </div>
+    <!--<figure>-->
+        <!--<img-->
+           <!--src="{{ url_for('static', filename='img/divergent-thinking.png') }}"-->
+           <!--width="300"-->
+           <!--height="320"-->
+           <!--border="0"-->
+           <!--align="right"-->
+           <!--alt="Divergent Thinking"-->
+           <!--title="Divergent Thinking">-->
+    <!--</figure>-->
+
+
+
+
+
+
+    <a name="technology"></a>
+    <hr>
+    <div class="row">
+        <div class="col-md-9">
+            <h2>
+                What is the technology behind "Creative Generator"?
+            </h2>
+        </div>
+        <div class="col-md-3">
+            <a href="#content">Back to top</a>
+        </div>
+    </div>
+
+    <p>
+        The front-end of this website is built by utilizing a sample from <a href="http://getbootstrap.com/">getbootstrap.com </a>
+        and the back-end is built using the <a href="http://flask.pocoo.org/"> Flask </a> micro framework.
+        The backbone of this tool is a machine learning model that takes input as a string and return the predictions
+        for each of the key word in that string, if that word is presented in the database.
+    </p>
+    <p>
+        The predictions are generated by a pretrained Word2Vec model which includes word vectors for a vocabulary of
+        3 million words and phrases that they trained on roughly 100 billion words from a Google News dataset.
+        The vector length is 300 features.
+    </p>
+    <div class="row">
+        <div class="col-md-6">
+            <p>
+                Word2Vec model is devised by the engineers at Google and it’s one of the most popular toolkit for word embedding.
+                The model consists in itself both the CBOW model and the Skip-Gram model.
+                The model generates vector representations of words in the corpus by ensuring that words sharing common
+                contexts in the corpus are located in close proximity to one another in the vector space.
+                The input would be a large corpus of text and the output would be the vector space, with each vocabulary
+                being assigned a vector.
+                This is how the model works: it takes a big sequence of words (from any corpus) and goes through each
+                position in the text. Each word will have a window of predetermined size around it. There is a probability
+                distribution that will give a probability to a word appearing in the context of the center word. The parameters
+                of our model need to be set so that the probability of a word appearing in the context of the
+                center word is as high as possible. The only parameter of the model is the vector representation of
+                each vocabulary in the corpus. The objective function to be maximized is the probability of any context word
+                given the current center word. The difference of word-2-vec model from the traditional artificial neural
+                network is that in the hidden layer, instead of having two parts the summation part and the activation
+                part (using an activation function), the Word-2-vec model only has the summation part for the hidden layer.
+                (Tomas Mikolov, et al., 2013)
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img
+           src="{{ url_for('static', filename='img/word2vec.png') }}"
+           width="500"
+           height="320"
+           border="0"
+
+           alt="Word2Vec"
+           title="Word2Vec">
+            <p></p>
+            <p align="center">
+                <i>Image from </i>
+                <a href="https://www.tensorflow.org/images/linear-relationships.png">
+                    <i>Tensorflow</i>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+    <a name="literature"></a>
+    <hr>
+    <div class="row">
+        <div class="col-md-9">
+            <h2> What is the literature behind the idea? </h2>
+        </div>
+        <div class="col-md-3">
+            <a href="#content">Back to top</a>
+        </div>
+    </div>
+    <p>
+        A literature review on creativity especially focusing on the working theories around creative problem solving
+        provides justification as to why this project would fill in an existing gap by providing a tool needed to
+        facilitate creative problem solving.
+    </p>
+    <h3> A/ Definition of creativity </h3>
+    <div class="row">
+        <div class="col-md-5">
+             <img
+           src="{{ url_for('static', filename='img/creativity.png') }}"
+           width="500"
+           height="320"
+           border="0"
+
+           alt="Creativity"
+           title="Creativity">
+            <p></p>
+            <p align="center">
+                <i>Image by  </i>
+                <a href="https://medium.com/creative-ignition/the-creative-elements-1a5ba59165cd">
+                    <i>Jason Theodor</i>
+                </a>
+            </p>
+
+        </div>
+        <div class="col-md-7">
+             <p> Similar to “concept”, the definition of creativity is not yet finalized by researchers in the field.
+                One distinction that I consider to be important is the difference between creativity within specific domains
+                and creativity as a separate, stand-alone process applied within different domains. The dominant definition
+                of creativity in the field mostly focused on the generic case. </p>
+            <p> Another distinction is between “high creativity” and “ordinary creativity”. High creativity is viewed as
+                “the ability to produce new knowledge” (Dacey & Lennon, 2000). This definition is considered to be limiting
+                in the sense that it can only be studied in extraordinarily talented people, and may be of less relevance
+                when we want to focus on the education process of all people. On the other hand, ordinary creativity “involves
+                being imaginative, going beyond the obvious, being aware of one’s own unconventionality, being original
+                in some way. It is not necessarily linked with a product-outcome”</p>
+            <p> On the other hand, thinking about creativity through an outcome-oriented lense, Mumford concluded that
+                “Creativity involves the production of novel, useful products” (Mumford, 2003). In this sense, there is
+                a distinguishment that can be made between creative arts and creative problem solving because each
+                corresponds to a specific type of product. "Creative generator" could prove to be useful in both cases, but
+                is more tailored to facilitate <b> creative problem solving </b> .
+                The core to this aspect of creativity - creative problem solving is Torrance’s definition of creativity
+                as <b> the process of understanding a problem, searching for possible solutions, generating hypotheses,
+                testing and evaluating and finally communicating the results to others. </b> (Torrance, 1969). In other word,
+                it involves two main processes: generating original ideas and then recombining them or seeing new
+                relationships among old ideas. This is the key piece that the development of my tool is based on -
+                the divergent and convergent processes.</p>
+        </div>
+
+    </div>
+
+
+
+
+    <h3> B/ Creativity and cognition </h3>
+    <p> Cognition study has classified creativity as an aspect of intelligence (Binet & Henri, 1896), as a
+        mainly unconscious process (Poincare, 1913, Freud, 1957) and as a problem-solving capacity (Wallas, 1926). </p>
+    <p> Two major lines of creativity investigation in the latter half of the 20th century are named psychometrics
+        and experimental psychodynamics. Psychometrics basically focused on divergent thinking as an indicator of
+        creative potential. This was pioneered by Guilford who created a tool to measure the level of “divergent
+        production” (Guilford, 1967). A more recent study by Mark A. Runco also showed that even though divergent
+        thinking does not guarantee actual creative achievement, tests of divergent thinking are reliable and
+        reasonably valid predictors of certain performance criteria. Psychodynamics mostly focused on the relationship
+        between personality, perception and creativity. The studies showed that creative person has certain
+        characteristics which are: talent to make alternative views of reality, courage to go against tradition
+        and special emotion towards the work of creation (Schoon, 1992, Anderson & Rhyammer, 1998). Recent
+        researches emphasized on the understanding of creative mind in terms of intelligence (Gardner, 1993).</p>
+
+
+
+    <h3> C/ Creative Problem Solving </h3>
+    <p> There are worked-out theories about creative problem solving that can shed light on the meaning and usefulness
+        of this project. The two main theories of problem solving are the search in a problem space approach developed
+        by Newell and Simon and the problem representation approach developed by Gestalt psychologists.</p>
+
+    <h4><b> The search in a problem space approach </b></h4>
+            <p>
+                In the book Human Problem Solving, Newell and Simon outlined the problem space theory of problem solving:
+        people solve problems by continuously searching in a problem space, which consists of “the initial state,
+        the goal state and all possible states in between”. Most of the time, the problem spaces become very large
+        that we need to rely on either domain knowledge to make decisions at each step, or the power of computer to
+        explore all the possibilities. Also, with the help of certain heuristics, the search in the space becomes
+        much more effective. Some typical heuristics are: repeat-state avoidance (avoiding going back to a previous
+        state) and hill-climbing (taking the step that associates with the shortest distance between the current state
+        to the goal state). (Newell and Simon, 1972). This theory of problem solving, however, is more suitable for
+        non-creative problem solving than creative problem solving because it requires a pre-defined goal state
+        (a correct answer) and in each step the solver would try to move from the initial state, through all possible
+        states to get closer to the goal state. In creative problem solving, this goal-state is difficult to define,
+        which makes it hard to evaluate what would be the best next step.
+            </p>
+
+    <br>
+    <h4><b> The problem representation approach </b></h4>
+    <div class="row">
+        <div class="col-md-7">
+
+            <p>
+                On the other hand, the problem representation approach developed by the Gestalt theorists is more relevant
+                to creative problem solving because it is about how solving a problem involves a “reorganization or
+                reconstruction of the representation of the problem in the mind”, which leads to a flash of “insight
+                experiences” that is essential for coming up with a solution. This “insight” is experienced suddenly
+                and unpredictably, and is also widely known as the “aha!” moment in problem solving (Finke et al., 1992;
+                Smith, 1995a).  The approach of discovering a new or different way to frame a problem helps to mitigate
+                the existing barriers to creative problem solving, one of which is called the functional fixedness.
+                Functional fixedness is basically a cognitive bias that hinders human from realizing that objects
+                can be used for multiple purposes other than what they are originally designed for. (Duncker, 1945).
+                This is illustrated in some problems such as the Maier’s two string problem (Maier, 1930) and the candle
+                problem (Duncker, 1945).  In the paper “Limitation of the current stock of ideas about problem solving”,
+                Newell pointed out that there is a limit in the tool or method created to facilitate the shift of problem
+                representation. Most of the time, people get stuck or even don’t know where to start: “with no representation
+                there is no possibility of manipulation and no way of making progress, thus the initial lost period is devoted
+                to finding a representation”.  (Newell, 1965). Strongly related to the goal of my project, this period of
+                finding a representation could be made more effective with the help of computer. The main task for machine
+                is to generate as much information that is related to the given prompt or problem as possible so that human
+                can find out a way to reframe the problem to come up with a creative solution.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <div></div>
+
+            <img
+           src="{{ url_for('static', filename='img/problem_representation.jpeg') }}"
+           width="500"
+           height="320"
+           border="0"
+
+           alt="problem_representation"
+           title="problem_representation">
+            <p></p>
+            <p align="center">
+                <i>Image by  </i>
+                <a href="https://medium.com/the-mission/your-life-is-tetris-stop-playing-it-like-chess-4baac6b2750d">
+                    <i>Tor Bair</i>
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <a name="references"></a>
+    <hr>
+
+     <div class="row">
+        <div class="col-md-9">
+            <h2> References </h2>
+        </div>
+        <div class="col-md-3">
+            <a href="#content">Back to top</a>
+        </div>
+    </div>
+    <ul>
+        <li> Andersson, A.L. & Ryhammer. (1998).  Psychoanalytic models of the mind, creative functioning and
+            perceptgenetic reconstruction. Psychoanalysis and Contemporary Thought, 21, pages 359-382 </li>
+        <li> Binet, A. & Henri, V. (1896). La psychologie individuelle. Annee Psychologie, 2, pages 411-465 </li>
+        <li> Dacey, J. & Lennon, K. (2000). Understanding creativity: the interplay of biological, psychological
+            and social factors. Creative Education Foundation, Buffalo, NY. </li>
+        <li> Duncker, K. (1945). On problem solving. Psychological Monographs, 58:5 (Whole No. 270). </li>
+        <li> Finke, R., Ward, T., & Smith, S. M. (1992). Creative cognition. Cambridge, MA: MIT Press. </li>
+        <li> Freud, S. (1910). Leonardo da Vinci and a memory of his childhood. Standard Edition,
+            Hogarth Press, London.</li>
+        <li> Runco, M.A. (2012) Divergent Thinking as an Indicator of Creative Potential.</li>
+        <li> Torrance, E.P. (1966) Torrance tests of creativity, Personnel Press, Princeton </li>
+        <li> Torrance, E.P. (1969). Creativity. What research says to the teacher, series no.28, National
+            Education Association, Washington, DC. </li>
+        <li> Gardner, H. (1993). Multiple intelligences: the theory in practice, HarperCollins, New York, 1993a </li>
+        <li> Gardner, H. (1993). Creating minds: an anatomy of creativity seen through the lives of Freud,
+            Einstein, Picasso, Stravinsky, Eliot, Graham and Gandhi, HarperCollins, New York. </li>
+        <li> Guilford, J.P. (1950). Creativity. American Psychologist, 5, pages 444-445 </li>
+        <li> Guilford, J.P. (1973). Characteristics of creativity. Illinois state office of the superintendent
+            of public instruction, gifted children section, Springfield, IL </li>
+        <li> Guilford, J.P. (1967). The nature of human intelligence.  McGraw Hill, New York, NY, 1967 </li>
+        <li> Schoon, I. (1992). Creative achievement in architecture: a psychological study. DSWO Press, Leiden. </li>
+        <li> Torrance, E.P. (1974). Torrance tests of creative thinking, Ginn & Company (Xerox Corporation) </li>
+        <li> Lexington, MA. (1984).  Torrance, E.P, Mentor relationships: how they aid creative achievement,
+        endure, change and die. Bearly, Buffalo, NY </li>
+        <li> Mikolov, T., Corrado, G., Chen, K., & Dean, J. (2013). Efficient Estimation of Word Representations in
+            Vector Space. Proceedings of the International Conference on Learning Representations (ICLR 2013), 1–12. </li>
+        <li>Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Distributed Representations of Words and Phrases
+            and their Compositionality. NIPS, 1–9.</li>
+        <li> Mumford, M. D. (2003). Where have we been, where are we going? Taking stock in creativity research.
+            Creativity Research Journal. 15: 107–120. doi:10.1080/10400419.2003.9651403. </li>
+        <li> Newell, A. (1965). Limitation of the current stock of ideas about problem solving. </li>
+        <li> Newell, A., & Simon, H. (1972). Human problem solving. Englewood Cliffs, N.J: Prentice-Hall. </li>
+        <li> Wallas, G. (1926). The art of thought. Hartcourt Brace, New York, NY. </li>
+    </ul>
+
+    <a name="contact"></a>
+    <hr>
+     <div class="row">
+        <div class="col-md-9">
+            <h2> Who to contact? </h2>
+        </div>
+        <div class="col-md-3">
+            <a href="#content">Back to top</a>
+        </div>
+    </div>
+    <p>
+        For more information about the project, please take a look at this
+        <a href="https://drive.google.com/file/d/1U003okiN1nobAQmzY5FJhmbqr89934UC/view?usp=sharing">proposal</a>,
+        or contact <a href="mailto:vyung@minerva.kgi.edu">Vy Ung</a>.
+    </p>
+    <hr>
+
+
+{% endblock %}
+

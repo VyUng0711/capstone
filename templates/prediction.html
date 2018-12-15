@@ -1,0 +1,188 @@
+{% extends "layout.html" %}
+{% block page_title %}Suggestions{% endblock %}
+{% block body %}
+    {{ super() }}
+    <hr>
+    <h4>QUERY: </h4>
+    <hr>
+    <h2>"{{query}}"</h2>
+    <hr>
+    <h4>RESULT: </h4>
+    <hr>
+    {{prediction_result | safe}}
+    <hr>
+    <h4>RANDOM COMBINATIONS: </h4>
+    <hr>
+
+    <!--<table class = "table">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Query</th>-->
+                <!--<th>Sites</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--{% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}-->
+        <!--{% set google_image = 'https://www.google.com/search?q=' %}-->
+        <!--{% set giphy = 'https://giphy.com/search/' %}-->
+
+        <!--{% for comb in random_combinations %}-->
+            <!--{% set comb_str = comb|join(" ") %}-->
+            <!--{% set pinterest_ex = comb|join("%20") %}-->
+            <!--{% set google_image_ex = comb|join("+") %}-->
+            <!--{% set giphy_ex = comb|join("-") %}-->
+
+            <!--<tr>-->
+                <!--<td> {{comb_str}} </td>-->
+                <!--<td>-->
+                <!--<div class="dropdown">-->
+                    <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Choose one-->
+                        <!--<span class="caret"></span></button>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href={{google_image}}{{google_image_ex}}>Google Image</a></li>-->
+                        <!--<li><a href={{pinterest}}{{pinterest_ex}}>Pinterest</a></li>-->
+                        <!--<li><a href={{giphy}}{{giphy_ex}}>Giphy</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--</td>-->
+            <!--</tr>-->
+
+        <!--{% endfor %}-->
+
+    <!--</table>-->
+
+    <!--<table class = "table">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>Query</th>-->
+                <!--<th>Google Image</th>-->
+                <!--<th>Pinterest</th>-->
+                <!--<th>Giphy</th>-->
+                <!--<th>Stocksnap</th>-->
+                <!--<th>Pexels</th>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--{% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}-->
+        <!--{% set google_image = 'https://www.google.com/search?q=' %}-->
+        <!--{% set giphy = 'https://giphy.com/search/' %}-->
+        <!--{% set stocksnap = 'https://stocksnap.io/search/' %}-->
+        <!--{% set pexels = 'https://www.pexels.com/search/' %}-->
+
+        <!--{% for comb in random_combinations %}-->
+            <!--{% set comb_str = comb|join(" ") %}-->
+            <!--{% set pinterest_ex = comb|join("%20") %}-->
+            <!--{% set google_image_ex = comb|join("+") %}-->
+            <!--{% set giphy_ex = comb|join("-") %}-->
+            <!--{% set stocksnap_ex = comb|join("+") %}-->
+            <!--{% set pexels_ex = comb|join("%20") %}-->
+
+            <!--<tr>-->
+                <!--<td> {{comb_str}} </td>-->
+                <!--<td><a href={{google_image}}{{google_image_ex}}>{{comb_str}}</a></td>-->
+                <!--<td> <a href={{pinterest}}{{pinterest_ex}}>{{comb_str}}</a> </td>-->
+                <!--<td> <a href={{giphy}}{{giphy_ex}}>{{comb_str}}</a> </td>-->
+                <!--<td> <a href={{stocksnap}}{{stocksnap_ex}}>{{comb_str}}</a> </td>-->
+                <!--<td> <a href={{pexels}}{{pexels_ex}}>{{comb_str}}</a> </td>-->
+            <!--</tr>-->
+
+        <!--{% endfor %}-->
+
+    <!--</table>-->
+
+
+    <table class = "table">
+        <thead>
+            <tr>
+                <th>Query</th>
+                <th>Google Image</th>
+                <th>Pinterest</th>
+                <th>Giphy</th>
+                <th>Stocksnap</th>
+                <th>Pexels</th>
+            </tr>
+        </thead>
+        {% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}
+        {% set google_image = 'https://www.google.com/search?q=' %}
+        {% set giphy = 'https://giphy.com/search/' %}
+        {% set stocksnap = 'https://stocksnap.io/search/' %}
+        {% set pexels = 'https://www.pexels.com/search/' %}
+
+        {% for comb in random_combinations %}
+            {% set comb_str = comb|join(" ") %}
+            {% set pinterest_ex = comb|join("%20") %}
+            {% set google_image_ex = comb|join("+") %}
+            {% set giphy_ex = comb|join("-") %}
+            {% set stocksnap_ex = comb|join("+") %}
+            {% set pexels_ex = comb|join("%20") %}
+
+            <tr>
+                <td> {{comb_str}} </td>
+                <td>
+                    <a href={{google_image}}{{google_image_ex}}>
+                        <img src="{{ url_for('static', filename='img/google.jpg') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="{{comb_str}}"
+                           title="{{comb_str}}">
+                    </a>
+                </td>
+                <td>
+                    <a href={{pinterest}}{{pinterest_ex}}>
+                        <img src="{{ url_for('static', filename='img/pinterest.jpg') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="{{comb_str}}"
+                           title="{{comb_str}}">
+                    </a>
+                </td>
+                <td id="p3">
+                    <a href={{giphy}}{{giphy_ex}}>
+                        <img src="{{ url_for('static', filename='img/giphy.png') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="Giphy"
+                           title="Giphy">
+                    </a>
+                    </a>
+                </td>
+                <td id="p3">
+                    <a href={{stocksnap}}{{stocksnap_ex}}>
+                        <img src="{{ url_for('static', filename='img/stocksnap.png') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="Stocksnap"
+                           title="Stocksnap">
+                    </a>
+                    </a>
+                </td>
+                <td id="p3">
+                    <a href={{pexels}}{{pexels_ex}}>
+                        <img src="{{ url_for('static', filename='img/pexels.png') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="Pexels"
+                           title="Pexels">
+                    </a>
+                    </a>
+                </td>
+
+        {% endfor %}
+
+    </table>
+
+
+
+
+
+{% endblock %}
+
+
