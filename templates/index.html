@@ -1,10 +1,21 @@
 {% extends "layout.html" %}
 {% block page_title %}Creative Generator{% endblock %}
+
 {% block body %}
     {{ super() }}
     <!--<h3>Please insert a query</h3>-->
     <!--<h4>Query contains at least 1 word and at most 10 words</h4>-->
-
+<p><a name="start"></a></p>
+<p></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <div align="center">
 
@@ -25,60 +36,105 @@
           </div>
         </div>
     </div>
+<a href="/help/">Need help? </a>
+
+
+<!--<p><a name="tutorial"></a></p>-->
+
+
+<!--<font color="green"><h3>Step 1: Insert your query into the search box</h3></font>-->
+<!--<img src="{{ url_for('static', filename='img/christmas_tree.png') }}" style="width:100%; opacity: 0.8">-->
+<!--<br>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<font color="green"><h3>Step 2: Check out the suggestions for each key word you entered</h3></font>-->
+<!--<img src="{{ url_for('static', filename='img/result.png') }}" style="width:100%; opacity: 0.8">-->
+<!--<br>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<font color="green"><h3>Step 3: Hover on an icon to see the preview of the search results of a combination</h3></font>-->
+<!--<img src="{{ url_for('static', filename='img/hover.png') }}" style="width:100%; opacity: 0.8">-->
+<!--<br>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<font color="green"><h3>Step 4: Click on the icon to be directed to the corresponding page</h3></font>-->
+<!--<img src="{{ url_for('static', filename='img/click.png') }}" style="width:100%; opacity: 0.8">-->
+<!--<br>-->
+<!--<hr>-->
+<!--<br>-->
+<!--<a href="#start"><h1>Ready to start? </h1></a>-->
+<!--<hr>-->
+<!--<br>-->
 
 
 
 
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators"  >
-      <li data-target="#myCarousel" data-slide-to="0" class="active" style="background:#C0C0C0;"></li>
-      <li data-target="#myCarousel" data-slide-to="1" style="background:#C0C0C0;"></li>
-      <li data-target="#myCarousel" data-slide-to="2" style="background:#C0C0C0;"></li>
-    </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
 
-      <div class="item active">
-        <img src="{{ url_for('static', filename='img/stepquery.png') }}" style="width:100%; opacity: 0.8">
-        <div class="carousel-caption" style="color:black;">
-          <h3>Step 1: QUERY</h3>
-          <!--<p>Enter a query</p>-->
-        </div>
-      </div>
 
-      <div class="item">
-          <!--<img src="{{ url_for('static', filename='img/suggestions.png') }}" style="width:100%;">-->
-          <img src="{{ url_for('static', filename='img/sug.png') }}" style="width:100%; opacity: 0.8">
-        <!--<img src="chicago.jpg" alt="Chicago" style="width:50%;">-->
-        <div class="carousel-caption" style="color:black;" >
-          <h3> Step 2: EXPLORE</h3>
-          <!--<p class="bg-info">Get the combinations</p>-->
-        </div>
-      </div>
 
-      <div class="item">
-        <img src="{{ url_for('static', filename='img/discover.png') }}" style="width:100%; opacity: 0.6">
-        <div class="carousel-caption" style="color:black;">
-          <h3>Step 3: DISCOVER</h3>
-          <!--<p>Pick the one you like!</p>-->
-        </div>
-      </div>
 
-    </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+    <!--<div id="myCarousel" class="carousel slide" data-ride="carousel">-->
+    <!--&lt;!&ndash; Indicators &ndash;&gt;-->
+    <!--<ol class="carousel-indicators"  >-->
+      <!--<li data-target="#myCarousel" data-slide-to="0" class="active" style="background:#C0C0C0;"></li>-->
+      <!--<li data-target="#myCarousel" data-slide-to="1" style="background:#C0C0C0;"></li>-->
+      <!--<li data-target="#myCarousel" data-slide-to="2" style="background:#C0C0C0;"></li>-->
+    <!--</ol>-->
+
+    <!--&lt;!&ndash; Wrapper for slides &ndash;&gt;-->
+    <!--<div class="carousel-inner">-->
+
+      <!--<div class="item active">-->
+        <!--<img src="{{ url_for('static', filename='img/christmas_tree.png') }}" style="width:100%; opacity: 0.8">-->
+        <!--<div class="carousel-caption" style="color:black;">-->
+          <!--<h3>Step 1: Insert your query into the search box</h3>-->
+          <!--&lt;!&ndash;<p>Enter a query</p>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="item">-->
+          <!--&lt;!&ndash;<img src="{{ url_for('static', filename='img/suggestions.png') }}" style="width:100%;">&ndash;&gt;-->
+          <!--<img src="{{ url_for('static', filename='img/result.png') }}" style="width:100%; opacity: 0.8">-->
+        <!--&lt;!&ndash;<img src="chicago.jpg" alt="Chicago" style="width:50%;">&ndash;&gt;-->
+        <!--<div class="carousel-caption" style="color:black;" >-->
+          <!--<h3> Step 2: Look through the suggestions for each key word you entered</h3>-->
+          <!--&lt;!&ndash;<p class="bg-info">Get the combinations</p>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="item">-->
+          <!--&lt;!&ndash;<img src="{{ url_for('static', filename='img/suggestions.png') }}" style="width:100%;">&ndash;&gt;-->
+          <!--<img src="{{ url_for('static', filename='img/hover.png') }}" style="width:100%; opacity: 0.8">-->
+        <!--&lt;!&ndash;<img src="chicago.jpg" alt="Chicago" style="width:50%;">&ndash;&gt;-->
+        <!--<div class="carousel-caption" style="color:black;" >-->
+          <!--<h3> Step 3: Hover on the icon to see a preview of the search resultsd</h3>-->
+          <!--&lt;!&ndash;<p class="bg-info">Get the combinations</p>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="item">-->
+        <!--<img src="{{ url_for('static', filename='img/click.png') }}" style="width:100%; opacity: 0.6">-->
+        <!--<div class="carousel-caption" style="color:black;">-->
+          <!--<h3>Step 4: Click on the icon to be directed to the corresponding page</h3>-->
+          <!--&lt;!&ndash;<p>Pick the one you like!</p>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+
+    <!--&lt;!&ndash; Left and right controls &ndash;&gt;-->
+    <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
+      <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+      <!--<span class="sr-only">Previous</span>-->
+    <!--</a>-->
+    <!--<a class="right carousel-control" href="#myCarousel" data-slide="next">-->
+      <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+      <!--<span class="sr-only">Next</span>-->
+    <!--</a>-->
+  <!--</div>-->
 
 
 

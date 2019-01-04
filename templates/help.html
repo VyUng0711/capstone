@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block page_title %}How to use
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+
+
+<font color="green"><h3>Step 1: Insert your query into the search box</h3></font>
+<img src="{{ url_for('static', filename='img/christmas_tree.png') }}" style="width:100%; opacity: 0.8">
+<br>
+<hr>
+<br>
+<font color="green"><h3>Step 2: Check out the suggestions for each key word you entered</h3></font>
+<img src="{{ url_for('static', filename='img/result.png') }}" style="width:100%; opacity: 0.8">
+<br>
+<hr>
+<br>
+<font color="green"><h3>Step 3: Hover on an icon to see the preview of the search results of a combination</h3></font>
+<img src="{{ url_for('static', filename='img/hover.png') }}" style="width:100%; opacity: 0.8">
+<br>
+<hr>
+<br>
+<font color="green"><h3>Step 4: Click on the icon to be directed to the corresponding page</h3></font>
+<img src="{{ url_for('static', filename='img/click.png') }}" style="width:100%; opacity: 0.8">
+<br>
+<hr>
+<br>
+<a href="/"><h1>I am ready to start >>> </h1></a>
+<hr>
+<br>
+
+{% endblock %}

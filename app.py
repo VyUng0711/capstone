@@ -141,6 +141,10 @@ def home_page():
 def get_public():
     return render_template("about.html")
 
+@app.route("/help/")
+def get_help():
+    return render_template("help.html")
+
 @app.route("/private/")
 def get_private():
     if "current_user" in session.keys():
