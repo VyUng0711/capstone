@@ -1,18 +1,41 @@
 {% extends "layout.html" %}
-{% block page_title %}Suggestions{% endblock %}
+{% block page_title %} Hi again! {% endblock %}
 {% block body %}
+    <!--<div id="work-in-progress">-->
+        <!--<div class="work-spinner"></div>-->
+    <!--</div>-->
     {{ super() }}
+
+    <!--<div class="progress">-->
+        <!--<div class="progress-bar progress-bar-success" style="width: 100%;"></div>-->
+    <!--</div>-->
     <hr>
-    <h4>QUERY: </h4>
+
+    {% if key_words|length == 0 %}
+        <h4> Unfortunately, none of the words you put in is in my dictionary at the moment :( </h4>
+        <h4> Can you try changing/tweaking some of the key words or ask me a slightly different topic?</h4>
+        <h2><a href="/"> >>> Back to search page </a></h2>
+
+
+    {% else %}
+
+    <h4>It took me a while to process the query. Thanks for your patient!</h4>
+    <br>
+    <h2>This is what I got from you: </h2>
     <hr>
-    <h2>"{{query}}"</h2>
+    <h4>"{{query}}"</h4>
     <hr>
-    <h4>RESULT: </h4>
+
+
+    <h2> Here are some words that are related to each of the key words I found interesting from what you gave me.
+        Check it out! </h2>
     <hr>
     {{prediction_result | safe}}
     <hr>
-    <h4>RANDOM COMBINATIONS: </h4>
+    <h2>I got some good stuff from the web for you from these queries </h2>
+    <h4>Hover on the icon to pre-view the result, and if you like, click on it to be directed to the page. </h4>
     <hr>
+
 
     <!--<table class = "table">-->
         <!--<thead>-->
@@ -98,59 +121,41 @@
         <!--</ul>-->
     <!--</p>-->
 
-<font color="red"> <p>
-    Hover on the icons to see previews of the result (except for Google and Pinterest)
-</p> </font>
+<!--<font color="red"> <p>-->
+    <!--Hover on the icons to see previews of the result (except for Google and Pinterest)-->
+<!--</p> </font>-->
 
     <table class = "table">
         <thead>
             <tr>
                 <th>Query</th>
-                <th>Google Image</th>
-                <th>Pinterest</th>
                 <th>Giphy</th>
                 <th>Stocksnap</th>
                 <th>Pexels</th>
+                <th>Pinterest</th>
+                <th>Google Image</th>
+
             </tr>
         </thead>
-        {% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}
-        {% set google_image = 'https://www.google.com/search?q=' %}
+        {% set google_search = 'https://www.google.com/search?q=' %}
         {% set giphy = 'https://giphy.com/search/' %}
         {% set stocksnap = 'https://stocksnap.io/search/' %}
         {% set pexels = 'https://www.pexels.com/search/' %}
+        {% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}
+        {% set google_image = 'https://www.google.com/search?tbm=isch&q=' %}
+
 
         {% for comb in random_combinations %}
             {% set comb_str = comb|join(" ") %}
-            {% set pinterest_ex = comb|join("%20") %}
-            {% set google_image_ex = comb|join("+") %}
             {% set giphy_ex = comb|join("-") %}
             {% set stocksnap_ex = comb|join("+") %}
             {% set pexels_ex = comb|join("%20") %}
+            {% set pinterest_ex = comb|join("%20") %}
+            {% set google_image_ex = comb|join("+") %}
+
 
             <tr>
-                <td> {{comb_str}} </td>
-                <td>
-                    <a href={{google_image}}{{google_image_ex}}>
-                        <img src="{{ url_for('static', filename='img/google.jpg') }}"
-                           width="50"
-                           height="50"
-                           border="0"
-
-                           alt="{{comb_str}}"
-                           title="{{comb_str}}">
-                    </a>
-                </td>
-                <td>
-                    <a href={{pinterest}}{{pinterest_ex}}>
-                        <img src="{{ url_for('static', filename='img/pinterest.jpg') }}"
-                           width="50"
-                           height="50"
-                           border="0"
-
-                           alt="{{comb_str}}"
-                           title="{{comb_str}}">
-                    </a>
-                </td>
+                <td> <a href="{{google_search}}{{google_image_ex}}"> {{comb_str}} </a> </td>
                 <td id="p3">
                     <a href={{giphy}}{{giphy_ex}}>
                         <img src="{{ url_for('static', filename='img/giphy.png') }}"
@@ -163,6 +168,7 @@
                     </a>
                     </a>
                 </td>
+
                 <td id="p3">
                     <a href={{stocksnap}}{{stocksnap_ex}}>
                         <img src="{{ url_for('static', filename='img/stocksnap.png') }}"
@@ -188,13 +194,46 @@
                     </a>
                 </td>
 
+                 <td>
+                    <a href={{pinterest}}{{pinterest_ex}}>
+                        <img src="{{ url_for('static', filename='img/pinterest.jpg') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="{{comb_str}}"
+                           title="{{comb_str}}">
+                    </a>
+                </td>
+
+                <td>
+                    <a href={{google_image}}{{google_image_ex}}>
+                        <img src="{{ url_for('static', filename='img/google.jpg') }}"
+                           width="50"
+                           height="50"
+                           border="0"
+
+                           alt="{{comb_str}}"
+                           title="{{comb_str}}">
+                    </a>
+                </td>
+
+
+
+
         {% endfor %}
 
     </table>
 
 
+    <hr>
+    <h2>I know that my suggestions are not always helpful and you may have not found what you want</h2>
+    <hr>
+    <h4>The good thing is you can always go back and ask me the same question, I would come up with a different set of suggestions</h4>
+    <h4>Or you can ask me a diferent question</h4>
+    <h2><a href="/"> >>> Back to search page </a></h2>
 
-
+    {% endif%}
 
 {% endblock %}
 

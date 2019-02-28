@@ -4,6 +4,7 @@ import datetime
 
 user_db_file_location = "database_file/users.db"
 note_db_file_location = "database_file/notes.db"
+query_db_file_location = "database_file/queries.db"
 
 
 def list_users():
@@ -45,7 +46,7 @@ def delete_user_from_db(id):
     _conn.close()
 
 
-def add_user(id, pw):
+def add_user_into_db(id, pw):
     _conn = sqlite3.connect(user_db_file_location)
     _c = _conn.cursor()
 
@@ -53,6 +54,20 @@ def add_user(id, pw):
     
     _conn.commit()
     _conn.close()
+
+
+def read_query_from_db(id):
+    _conn = sqlite3.connect(query_db_file_location)
+    _c = _conn.cursor()
+
+    command = "select query_id, timestamp, query from queries where user = '" + id.upper() + "';"
+    _c.execute(command)
+    result = _c.fetchall()
+
+    _conn.commit()
+    _conn.close()
+
+    return result
 
 
 def read_note_from_db(id):
@@ -82,6 +97,17 @@ def match_user_id_with_note_id(note_id):
     _conn.close()
 
     return result
+
+
+def write_query_into_db(id, query_to_write):
+    _conn = sqlite3.connect(query_db_file_location)
+    _c = _conn.cursor()
+
+    current_timestamp = str(datetime.datetime.now())
+    _c.execute("insert into queries values(?, ?, ?, ?)", (id.upper(), current_timestamp, query_to_write, hashlib.sha1((id.upper() + current_timestamp).encode()).hexdigest()))
+
+    _conn.commit()
+    _conn.close()
 
 
 def write_note_into_db(id, note_to_write):

@@ -1,20 +1,96 @@
 {% extends "layout.html" %}
-{% block page_title %}Creative Generator{% endblock %}
+{% block page_title %}Hello, I am Brainstorme!{% endblock %}
 
-{% block body %}
-    {{ super() }}
+
+<!--{% block body %}-->
+    <!--{{ super() }}-->
+        <!--{% if error %}-->
+            <!--<div class="alert alert-warning" role="alert">-->
+              <!--<strong>Error!</strong> {{ error }}-->
+            <!--</div>-->
+        <!--{% elif success %}-->
+            <!--<div class="alert alert-success" role="alert">-->
+              <!--{{ success }}-->
+            <!--</div>-->
+        <!--{% endif %}-->
+<br>
+<div class="example">
+    I am here to help you with brainstorming, either to create a piece of arts, design a product, write a paper or solve a problem. <br/>
+    <!--<br>-->
+    <!--I am not intelligent like a chatbot, but I am here for you. <br/>-->
+    <!--<br>-->
+    <!--We all have that crazy friend, but their silly ideas sometimes may lead you to think about things differently. <br/>-->
+    <!--<br>-->
+    <!--And I hope to be that friend of yours <3 <br/>-->
+    <!--<br>-->
+</div>
     <!--<h3>Please insert a query</h3>-->
     <!--<h4>Query contains at least 1 word and at most 10 words</h4>-->
-<p><a name="start"></a></p>
-<p></p>
+<!--<p><a name="start"></a></p>-->
+
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<!--<h3>-->
+    <!--So, tell me, what's on your mind?-->
+<!--</h3>-->
+<!--<br>-->
+<p>
+    You can start by giving me just one key word, to understand better how I work. <br/>
+    <br>
+    Some good examples to try out:
+
+<div class="row">
+    <div class="col-md-3">
+        <ul>
+            <li>Ocean</li>
+            <li>Flower</li>
+            <li>Nature</li>
+            <li>Warming</li>
+            <li>Rain</li>
+            <li>Street</li>
+            <li>Economics</li>
+            <li>Food</li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <ul>
+            <li>Sport clothes</li>
+            <li>Abstract art</li>
+            <li>Christmas tree</li>
+            <li>Red carpet</li>
+            <li>Global warming</li>
+            <li>Flying car</li>
+        </ul>
+
+    </div>
+    <div class="col-md-3">
+        <ul>
+            <li>Design Christmas Card</li>
+            <li>Write a love song</li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<!--<ul>-->
+    <!--<li>Sport clothes</li>-->
+    <!--<li>Abstract art</li>-->
+    <!--<li>Ocean</li>-->
+    <!--<li>Christmas tree</li>-->
+    <!--<li>Flower</li>-->
+    <!--<li>Nature</li>-->
+    <!--<li>Warming</li>-->
+    <!--<li>Rain</li>-->
+    <!--<li>Street</li>-->
+    <!--<li>Economics</li>-->
+    <!--<li>Food</li>-->
+    <!--<li>Red carpet</li>-->
+    <!--<li>Driver</li>-->
+    <!--<li>Sleep</li>-->
+    <!--<li>Picture</li>-->
+
+<!--</ul>-->
+</p>
 <br>
 
 <div align="center">
@@ -27,7 +103,7 @@
               <div align = "center">
           <form method="post">
               <div class="input-group">
-                  <input class="form-control" placeholder="Enter a query" name="query"></input>
+                  <input class="form-control" placeholder="Which topic are you working on?" name="query"></input>
                   <span class="input-group-btn">
                       <button type="submit" class="btn btn-success">Search</button>
                   </span>
@@ -36,7 +112,7 @@
           </div>
         </div>
     </div>
-<a href="/help/">Need help? </a>
+<a href="/help/">Did I confuse you? </a>
 
 
 <!--<p><a name="tutorial"></a></p>-->

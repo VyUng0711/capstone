@@ -25,21 +25,38 @@
         <table class="table small">
             <thead>
                 <tr>
-                  <th>Note ID</th>
                   <th>Timestamp</th>
                   <th>Note</th>
                   <th>Action</th>
                 </tr>
             </thead>
+
             {% for note_id, timestamp, note, act in notes %}
                     <tr>
-                       <td> {{ note_id }} </td>
                        <td> {{ timestamp }} </td>
                        <td> {{ note }} </td>
                        <td><a href={{act}}>Delete</a></td>
                     </tr>
-                    
             {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if queries %}
+        <h3>Your Past Queries</h3>
+        <table class="table small">
+            <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Query</th>
+                </tr>
+            </thead>
+            {% for query_id, timestamp, query in queries %}
+                    <tr>
+                       <td> {{ timestamp }} </td>
+                       <td> {{ query }} </td>
+                    </tr>
+            {% endfor %}
+
         </table>
     {% endif %}
 
