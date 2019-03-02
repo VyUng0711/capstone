@@ -1,18 +1,10 @@
 {% extends "layout.html" %}
-{% block page_title %}Hello, I am Brainstorme!{% endblock %}
+{% block page_title %}Hello, I am Brainstormy!{% endblock %}
 
 
-<!--{% block body %}-->
-    <!--{{ super() }}-->
-        <!--{% if error %}-->
-            <!--<div class="alert alert-warning" role="alert">-->
-              <!--<strong>Error!</strong> {{ error }}-->
-            <!--</div>-->
-        <!--{% elif success %}-->
-            <!--<div class="alert alert-success" role="alert">-->
-              <!--{{ success }}-->
-            <!--</div>-->
-        <!--{% endif %}-->
+{% block body %}
+    {{ super() }}
+
 <br>
 <div class="example">
     I am here to help you with brainstorming, either to create a piece of arts, design a product, write a paper or solve a problem. <br/>
@@ -35,9 +27,8 @@
 <!--</h3>-->
 <!--<br>-->
 <p>
-    You can start by giving me just one key word, to understand better how I work. <br/>
+    You can start by trying out some examples below to understand better how I work. <br/>
     <br>
-    Some good examples to try out:
 
 <div class="row">
     <div class="col-md-3">
@@ -60,59 +51,65 @@
             <li>Red carpet</li>
             <li>Global warming</li>
             <li>Flying car</li>
+            <li>Pet fish</li>
         </ul>
-
     </div>
     <div class="col-md-3">
         <ul>
             <li>Design Christmas Card</li>
             <li>Write a love song</li>
-            <li></li>
-            <li></li>
         </ul>
     </div>
 </div>
-<!--<ul>-->
-    <!--<li>Sport clothes</li>-->
-    <!--<li>Abstract art</li>-->
-    <!--<li>Ocean</li>-->
-    <!--<li>Christmas tree</li>-->
-    <!--<li>Flower</li>-->
-    <!--<li>Nature</li>-->
-    <!--<li>Warming</li>-->
-    <!--<li>Rain</li>-->
-    <!--<li>Street</li>-->
-    <!--<li>Economics</li>-->
-    <!--<li>Food</li>-->
-    <!--<li>Red carpet</li>-->
-    <!--<li>Driver</li>-->
-    <!--<li>Sleep</li>-->
-    <!--<li>Picture</li>-->
 
-<!--</ul>-->
 </p>
 <br>
 
-<div align="center">
 
-        <!--<hr>-->
+<!--<div align="center">-->
+            <!--<div class="form-group">-->
+          <!--&lt;!&ndash;<label for="textArea" class="col-lg-1 control-label">Query</label>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div align = "center" class="col-lg-8">&ndash;&gt;-->
+              <!--<div align = "center">-->
+          <!--<form method="post">-->
+              <!--<div class="input-group">-->
+                  <!--<input class="form-control" placeholder="Which topic are you working on?" name="query"></input>-->
+                  <!--<span class="input-group-btn">-->
+                      <!--<button type="submit" class="btn btn-success">Search</button>-->
+                  <!--</span>-->
+              <!--</div>-->
+          <!--</form>-->
+          <!--</div>-->
+        <!--</div>-->
+<!--</div>-->
 
-        <div class="form-group">
-          <!--<label for="textArea" class="col-lg-1 control-label">Query</label>-->
-          <!--<div align = "center" class="col-lg-8">-->
-              <div align = "center">
-          <form method="post">
-              <div class="input-group">
-                  <input class="form-control" placeholder="Which topic are you working on?" name="query"></input>
-                  <span class="input-group-btn">
-                      <button type="submit" class="btn btn-success">Search</button>
-                  </span>
-              </div>
-          </form>
-          </div>
-        </div>
+<form method="post">
+    <div class="form-group">
+        <label for="query">Enter a query</label>
+        <input class="form-control" placeholder="e.g: Christmas tree" id="query" name="query">
+        <!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+        <small id="queryHelp" class="form-text text-muted"><a href="/help/">Learn more about how this works?</a></small>
     </div>
-<a href="/help/">Did I confuse you? </a>
+    <div class="form-group">
+        <label for="fix_keywords">Enter keywords you want to be fixed</label>
+        <input class="form-control" id="fix_keywords" name="fix_keywords" placeholder="e.g: tree">
+        <small id="kw_help" class="form-text text-muted">
+            This can be left blank if you want all the words to be used for generating suggestion.
+        </small>
+
+    </div>
+    <!--<div class="form-check">-->
+        <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">-->
+        <!--<label class="form-check-label" for="exampleCheck1">Check me out</label>-->
+    <!--</div>-->
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+
+
+
+
+
+<!--<a href="/help/">Did I confuse you? </a>-->
 
 
 <!--<p><a name="tutorial"></a></p>-->
