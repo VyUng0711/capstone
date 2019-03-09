@@ -1,16 +1,8 @@
-import os
-import datetime
-import hashlib
-import re
-import random
-import pickle
-import pandas as pd
-from string import punctuation
 from flask import Flask, session, url_for, redirect, render_template, request, abort, flash
 from model import word2vec_predict_sentence_with_fixed_keywords, change_vocab
 from database import list_users, verify, delete_user_from_db, add_user_into_db
-from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id, write_query_into_db, read_query_from_db
-# from database import image_upload_record, list_images_for_user, match_user_id_with_image_uid, delete_image_from_db
+from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id
+from database import write_query_into_db, read_query_from_db
 from werkzeug.utils import secure_filename
 import gensim
 from collections import defaultdict
@@ -23,22 +15,6 @@ app.config.from_object('config')
 
 model = gensim.models.KeyedVectors.load_word2vec_format(config.MODEL, binary=True)
 change_vocab(model)
-#
-# word_vocab = model.vocab
-# word_vectors = model.wv
-#
-# map_word_to_frequency = {}
-# for k, v in word_vocab.items():
-#     map_word_to_frequency[k] = v.count
-#
-# small_vocab = {}
-# for k, v in map_word_to_frequency.items():
-#     if k in english_vocab:
-#         small_vocab[k] = v
-# new_vocab = {}
-# for k, v in small_vocab.items():
-#     new_vocab[k] = model.vocab[k]
-# model.vocab = new_vocab
 
 
 @app.errorhandler(401)
@@ -93,16 +69,6 @@ def get_admin():
     else:
         return abort(401)
 
-# @app.route("/suggestion/<query>/<key_words>/<prediction_result>/<random_combinations>")
-# def suggestions(prediction_result, query, random_combinations, key_words):
-#     return(render_template(
-#         "prediction.html",
-#         prediction_result=prediction_result,
-#         query=query,
-#         random_combinations=random_combinations,
-#         key_words=key_words
-#     ))
-
 @app.route("/", methods=["POST"])
 def get_predictions():
     query = request.form.get("query")
@@ -115,11 +81,6 @@ def get_predictions():
         fix_keywords,
         model
     )
-    # key_words, prediction_result, random_combinations = word2vec_predict_sentence(query)
-
-    # prediction_result, random_combinations = word2vec_predict_simple(query)
-    # return(render_template("prediction.html", titles=titles, rows=rows, query=query))
-
     return(render_template(
         "prediction.html",
         prediction_result=prediction_result,
@@ -157,53 +118,45 @@ def get_signup():
 def signup():
     id_submitted = request.form.get("inputName")
     pw_submitted = request.form.get("inputPassword")
-    # success = None
     # before we add the user, we need to ensure this doesn't exists in database.
     if id_submitted.upper() in list_users():
         flash("The account name already exists.", "error")
         return redirect(url_for("get_signup"))
-        # return render_template("signup.html", id_to_add_is_duplicated=True, valid_pw=True)
+    elif " " in id_submitted or "'" in id_submitted:
+        flash("The account name is invalid. Account name must not contain space or apostrophe", "error")
+        return redirect(url_for("get_signup"))
     else:
+        # TODO: Add more requirements for password
         if len(pw_submitted) < 5:
             flash("Password must contain at least 5 characters.", "error")
             return redirect(url_for("get_signup"))
-            # return render_template("signup.html", id_to_add_is_duplicated=False, valid_pw=False)
         else:
             add_user_into_db(id_submitted, pw_submitted)
-            # success = "You have successfully signed up"
             flash("You have successfully signed up")
             return redirect(url_for("home_page"))
-            # return render_template("index.html", success=success)
+
 
 
 @app.route("/login", methods=["POST"])
 def login():
-    # error = None
-    # success = None
     id_submitted = request.form.get("id").upper()
     if id_submitted not in list_users():
         flash("User name not found", 'error')
-        # error = "User name not found"
     else:
         if not verify(id_submitted, request.form.get("pw")):
             flash('Wrong password', 'error')
-            # error = 'Wrong password'
         else:
             session['current_user'] = id_submitted
-            # success = "You have successfully logged in"
             flash('Welcome back! You have successfully logged in')
 
     return redirect(url_for("home_page"))
-    # return render_template("index.html", error=error, success=success)
 
 
 
 @app.route("/logout/")
 def logout():
     session.pop("current_user", None)
-    # success = "You have successfully logged out"
     flash('You have successfully logged out')
-    # return render_template("index.html", success=success)
     return redirect(url_for("home_page"))
 
 

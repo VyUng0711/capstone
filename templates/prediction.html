@@ -39,98 +39,10 @@
     <hr>
     {{prediction_result | safe}}
     <hr>
-    <h2>I got some good stuff from the web for you from these queries </h2>
+    <h2>I got some images from the web for you from these queries </h2>
     <h4>Hover on the icon to pre-view the result, and if you like, click on it to be directed to the page. </h4>
     <hr>
 
-
-    <!--<table class = "table">-->
-        <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>Query</th>-->
-                <!--<th>Sites</th>-->
-            <!--</tr>-->
-        <!--</thead>-->
-        <!--{% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}-->
-        <!--{% set google_image = 'https://www.google.com/search?q=' %}-->
-        <!--{% set giphy = 'https://giphy.com/search/' %}-->
-
-        <!--{% for comb in random_combinations %}-->
-            <!--{% set comb_str = comb|join(" ") %}-->
-            <!--{% set pinterest_ex = comb|join("%20") %}-->
-            <!--{% set google_image_ex = comb|join("+") %}-->
-            <!--{% set giphy_ex = comb|join("-") %}-->
-
-            <!--<tr>-->
-                <!--<td> {{comb_str}} </td>-->
-                <!--<td>-->
-                <!--<div class="dropdown">-->
-                    <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Choose one-->
-                        <!--<span class="caret"></span></button>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href={{google_image}}{{google_image_ex}}>Google Image</a></li>-->
-                        <!--<li><a href={{pinterest}}{{pinterest_ex}}>Pinterest</a></li>-->
-                        <!--<li><a href={{giphy}}{{giphy_ex}}>Giphy</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--</td>-->
-            <!--</tr>-->
-
-        <!--{% endfor %}-->
-
-    <!--</table>-->
-
-    <!--<table class = "table">-->
-        <!--<thead>-->
-            <!--<tr>-->
-                <!--<th>Query</th>-->
-                <!--<th>Google Image</th>-->
-                <!--<th>Pinterest</th>-->
-                <!--<th>Giphy</th>-->
-                <!--<th>Stocksnap</th>-->
-                <!--<th>Pexels</th>-->
-            <!--</tr>-->
-        <!--</thead>-->
-        <!--{% set pinterest = 'https://www.pinterest.com/search/pins/?q=' %}-->
-        <!--{% set google_image = 'https://www.google.com/search?q=' %}-->
-        <!--{% set giphy = 'https://giphy.com/search/' %}-->
-        <!--{% set stocksnap = 'https://stocksnap.io/search/' %}-->
-        <!--{% set pexels = 'https://www.pexels.com/search/' %}-->
-
-        <!--{% for comb in random_combinations %}-->
-            <!--{% set comb_str = comb|join(" ") %}-->
-            <!--{% set pinterest_ex = comb|join("%20") %}-->
-            <!--{% set google_image_ex = comb|join("+") %}-->
-            <!--{% set giphy_ex = comb|join("-") %}-->
-            <!--{% set stocksnap_ex = comb|join("+") %}-->
-            <!--{% set pexels_ex = comb|join("%20") %}-->
-
-            <!--<tr>-->
-                <!--<td> {{comb_str}} </td>-->
-                <!--<td><a href={{google_image}}{{google_image_ex}}>{{comb_str}}</a></td>-->
-                <!--<td> <a href={{pinterest}}{{pinterest_ex}}>{{comb_str}}</a> </td>-->
-                <!--<td> <a href={{giphy}}{{giphy_ex}}>{{comb_str}}</a> </td>-->
-                <!--<td> <a href={{stocksnap}}{{stocksnap_ex}}>{{comb_str}}</a> </td>-->
-                <!--<td> <a href={{pexels}}{{pexels_ex}}>{{comb_str}}</a> </td>-->
-            <!--</tr>-->
-
-        <!--{% endfor %}-->
-
-    <!--</table>-->
-    <!--<p>-->
-        <!--<ul>-->
-            <!--<li>-->
-                <!--Hover on the icons to see previews of the result (except for Google and Pinterest)-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--Click on the icons to be directed to the corresponding sites.-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</p>-->
-
-<!--<font color="red"> <p>-->
-    <!--Hover on the icons to see previews of the result (except for Google and Pinterest)-->
-<!--</p> </font>-->
 
     <table class = "table">
         <thead>
@@ -224,8 +136,6 @@
                            title="{{comb_str}}">
                     </a>
                 </td>
-
-
 
 
         {% endfor %}

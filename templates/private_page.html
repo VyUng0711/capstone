@@ -1,24 +1,22 @@
 {% extends "layout.html" %}
-{% block page_title %}My Note{% endblock %}
+{% block page_title %}Your Space{% endblock %}
 {% block body %}
     {{ super() }}
 
-
     <hr>
-    
+
     <h3>Add Note</h3>
     <div class="form-group">
-      <label for="textArea" class="col-lg-3 control-label">Note to Take</label>
-      <div class="col-lg-9">
-      <form action="/write_note" method="post">
-        <input class="form-control" name="text_note_to_take"></input>
-        <button type="submit" class="btn btn-success">Submit</button>
-        </form>
-      </div>
+        <label for="textArea" class="col-lg-3 control-label">Note to Take</label>
+        <div class="col-lg-9">
+            <form action="/write_note" method="post">
+                <input class="form-control" name="text_note_to_take"></input>
+                <button type="submit" class="btn btn-success">Add</button>
+            </form>
+        </div>
     </div>
 
     <hr>
-
 
     {% if notes %}
         <h3>Your Notes</h3>
@@ -41,6 +39,7 @@
         </table>
     {% endif %}
 
+    <hr>
     {% if queries %}
         <h3>Your Past Queries</h3>
         <table class="table small">

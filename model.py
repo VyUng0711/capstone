@@ -69,45 +69,18 @@ def word2vec_predict_sentence_with_fixed_keywords(sentence, fix_keywords, model)
     key_words = []
 
     for word in processed_sentence:
-        key_words.append(word)
-        lower = word.lower()
-        if word in model.vocab:
+        # Turn word to lower case:
+        lowered = word.lower()
+        # Get capitalized word
+        capitalized = word.capitalize()
+        if lowered in model.vocab:
+            key_words.append(word)
             words = get_suggestions(word, processed_fix_keywords, model)
             map_word_to_suggestions[word] = words
-        elif lower in model.vocab:
-            words = get_suggestions(lower, processed_fix_keywords, model)
-            map_word_to_suggestions[lower] = words
-
-    shuffled = []
-    for suggestion in list(map_word_to_suggestions.values()):
-        shuffled.append(random.sample(suggestion, len(suggestion)))
-    random_com = []
-    for i in range(10):
-        this_com = [x[i] for x in shuffled]
-        random_com.append(this_com)
-
-    suggestion_df = pd.DataFrame(map_word_to_suggestions)
-    df_html = suggestion_df.to_html(classes='table', escape=True, border=0, justify='center')
-    return key_words, df_html, random_com
-
-
-def word2vec_predict_sentence(sentence, model):
-    no_punc = sentence.translate(str.maketrans('', '', punctuation))
-    processed = [word for word in no_punc.split() if word not in stopword]
-    map_word_to_suggestions = defaultdict(list)
-    key_words = []
-    for word in processed:
-        lower = word.lower()
-        if word in model.vocab:
+        elif capitalized in model.vocab:
             key_words.append(word)
-            result = model.most_similar(word, topn=TOP_N)
-            words = clean_result(res=result, no=K)
+            words = get_suggestions(capitalized, processed_fix_keywords, model)
             map_word_to_suggestions[word] = words
-        elif lower in model.vocab:
-            key_words.append(word)
-            result = model.most_similar(lower, topn=TOP_N)
-            words = clean_result(res=result, no=K)
-            map_word_to_suggestions[lower] = words
 
     shuffled = []
     for suggestion in list(map_word_to_suggestions.values()):
@@ -122,35 +95,49 @@ def word2vec_predict_sentence(sentence, model):
     return key_words, df_html, random_com
 
 
-
-# def word2vec_predict_sentence(sentence):
+# def word2vec_predict_sentence(sentence, model):
+#     no_punc = sentence.translate(str.maketrans('', '', punctuation))
+#     processed = [word for word in no_punc.split() if word not in stopword]
 #     map_word_to_suggestions = defaultdict(list)
-#
-#     for word in sentence.split():
+#     key_words = []
+#     for word in processed:
+#         if word[0].isupper():
+#             swap = word.lower()
+#         else:
+#             swap = word.upper()
 #         if word in model.vocab:
-#             result = model.most_similar(word, topn=100)
-#             words = [x[0] for x in random.choices(result, k = 10)]
+#             key_words.append(word)
+#             result = model.most_similar(word, topn=TOP_N)
+#             words = clean_result(res=result, no=K)
 #             map_word_to_suggestions[word] = words
+#         elif swap in model.vocab:
+#             key_words.append(word)
+#             result = model.most_similar(swap, topn=TOP_N)
+#             words = clean_result(res=result, no=K)
+#             map_word_to_suggestions[swap] = words
 #
+#     shuffled = []
+#     for suggestion in list(map_word_to_suggestions.values()):
+#         shuffled.append(random.sample(suggestion, len(suggestion)))
 #     random_com = []
 #     for i in range(10):
-#         this_com = [x[i] for x in map_word_to_suggestions.values()]
+#         this_com = [x[i] for x in shuffled]
 #         random_com.append(this_com)
 #
 #     suggestion_df = pd.DataFrame(map_word_to_suggestions)
 #     df_html = suggestion_df.to_html(classes='table', escape=True, border=0, justify='center')
+#     return key_words, df_html, random_com
+
+
+# def word2vec_predict_simple(sentence):
+#     # titles = ['cat', 'hello']
+#     # rows = [['dog', 'hi'], ['lion', 'goodbye'], ['tiger', 'yo'], ['pig', 'welcome']]
+#     # return titles, rows
+#     # return {'cat': ['dog', 'lion', 'tiger', 'pig'], 'hello': ['hi', 'goodbye', 'yo', 'welcome']}
+#     df = pd.DataFrame({'cat': ['dog', 'lion', 'tiger', 'pig'],
+#                        'hello': ['hi', 'goodbye', 'yo', 'welcome'],
+#                        'christmas': ['xmas', 'holiday', 'Noel', 'Santa']})
+#     df_html = df.to_html(classes='table', escape=True, border=0, justify='center')
+#     random_com = [['dog', 'hi', 'xmas'], ['lion', 'goodbye', 'holiday']]
 #     return df_html, random_com
-
-
-def word2vec_predict_simple(sentence):
-    # titles = ['cat', 'hello']
-    # rows = [['dog', 'hi'], ['lion', 'goodbye'], ['tiger', 'yo'], ['pig', 'welcome']]
-    # return titles, rows
-    # return {'cat': ['dog', 'lion', 'tiger', 'pig'], 'hello': ['hi', 'goodbye', 'yo', 'welcome']}
-    df = pd.DataFrame({'cat': ['dog', 'lion', 'tiger', 'pig'],
-                       'hello': ['hi', 'goodbye', 'yo', 'welcome'],
-                       'christmas': ['xmas', 'holiday', 'Noel', 'Santa']})
-    df_html = df.to_html(classes='table', escape=True, border=0, justify='center')
-    random_com = [['dog', 'hi', 'xmas'], ['lion', 'goodbye', 'holiday']]
-    return df_html, random_com
 
