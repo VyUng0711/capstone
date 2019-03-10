@@ -6,15 +6,17 @@
 
 
     <div class="jumbotron">
-            <form action="/signup_user_info" method="post" class="form-signin">
-
-            <label for="inputName" class="sr-only">Name</label>
+        <form action="/signup_user_info" method="post" class="form-signin">
+            <label for="inputName">User Name</label>
             <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Name" required autofocus>
+            <small id="namehelp" class="form-text text-muted">User name must not contain space or apostrophe</small>
+            <br>
             <!--<label for="inputEmail" class="sr-only">Email address</label>-->
             <!--<input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>-->
-            <label for="inputPassword" class="sr-only">Password</label>
+            <label for="inputPassword">Password</label>
             <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-
+            <small id="pwhelp" class="form-text text-muted">Password must have at least 5 characters</small>
+            <hr>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
           </form>
     </div>
