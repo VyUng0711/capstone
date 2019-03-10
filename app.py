@@ -3,9 +3,7 @@ from model import word2vec_predict_sentence_with_fixed_keywords, change_vocab
 from database import list_users, verify, delete_user_from_db, add_user_into_db
 from database import read_note_from_db, write_note_into_db, delete_note_from_db, match_user_id_with_note_id
 from database import write_query_into_db, read_query_from_db
-from werkzeug.utils import secure_filename
 import gensim
-from collections import defaultdict
 
 import config
 
@@ -14,7 +12,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 model = gensim.models.KeyedVectors.load_word2vec_format(config.MODEL, binary=True)
-change_vocab(model)
+# change_vocab(model)
 
 
 @app.errorhandler(401)

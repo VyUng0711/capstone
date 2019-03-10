@@ -44,12 +44,13 @@ def delete_user_from_db(id):
     _c.execute("delete from notes where user = '" + id + "';")
     _conn.commit()
     _conn.close()
-    # when we delete a user from database USERS, we also need to delete all his or her queries data from database NOTES
+    # when we delete a user from database USERS, we also need to delete all his or her queries data from database QUERIES
     _conn = sqlite3.connect(query_db_file_location)
     _c = _conn.cursor()
     _c.execute("delete from queries where user = '" + id + "';")
     _conn.commit()
     _conn.close()
+
 
 def add_user_into_db(id, pw):
     _conn = sqlite3.connect(user_db_file_location)
