@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e17bc588-79ed-4e00-813a-636d25e5193a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_file/notes.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_file/queries.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_file/users.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database_file/all_tables.db" beforeDir="false" afterPath="$PROJECT_DIR$/database_file/all_tables.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +52,7 @@
         <counts>
           <entry key="html" value="2985" />
           <entry key="md" value="1124" />
-          <entry key="py" value="3778" />
+          <entry key="py" value="3804" />
           <entry key="sql" value="480" />
         </counts>
       </usages-collector>
@@ -66,14 +60,14 @@
         <counts>
           <entry key="HTML" value="2985" />
           <entry key="Markdown" value="1124" />
-          <entry key="Python" value="3778" />
+          <entry key="Python" value="3804" />
           <entry key="SQL" value="480" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5614679">
+    <splitter split-orientation="horizontal" split-proportion="0.79541284">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -113,11 +107,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/database.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2484">
-                  <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
+                <state relative-caret-position="2265">
+                  <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
                   <folding>
                     <element signature="e#0#14#0" expanded="true" />
-                    <marker date="1552252685040" expanded="true" signature="5148:5150" ph="..." />
+                    <marker date="1552253552103" expanded="true" signature="2908:2910" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -461,21 +455,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database.py">
+    <entry file="file://$PROJECT_DIR$/schema.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2484">
-          <caret line="190" lean-forward="true" selection-start-line="190" selection-end-line="190" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <marker date="1552252685040" expanded="true" signature="5148:5150" ph="..." />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/schema.sql">
+    <entry file="file://$PROJECT_DIR$/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="2265">
+          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <marker date="1552253552103" expanded="true" signature="2908:2910" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
