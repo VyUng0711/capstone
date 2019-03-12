@@ -56,6 +56,7 @@ def get_private():
     else:
         return abort(401)
 
+
 @app.route("/admin/")
 def get_admin():
     if session.get("current_user", None) == "ADMIN":
@@ -66,6 +67,7 @@ def get_admin():
         return render_template("admin.html", users=user_table)
     else:
         return abort(401)
+
 
 @app.route("/", methods=["POST"])
 def get_predictions():
