@@ -40,14 +40,19 @@ def clean_input(input_string):
 
 def clean_result(res, no):
     cleaned = set()
+    uncleaned = set()
     for k, v in res:
         k = k.replace('_', ' ').lower()
         merged = k.replace(' ', '')
         if merged.isalpha():
             cleaned.add(k.replace(' ', '_'))
-        # if not k.isalpha():
-        #     k = regex.sub('', k)
-        # cleaned.add(k.replace('_', ' '))
+        else:
+            uncleaned.add(k.replace(' ', '_'))
+
+    # Make sure length of suggestion is always equal to K
+    if len(cleaned) < no:
+        cleaned.update(set(random.sample(uncleaned, no - len(cleaned))))
+
     words = random.sample(cleaned, no)
     return words
 
@@ -81,19 +86,23 @@ def word2vec_predict_sentence_with_fixed_keywords(sentence, fix_keywords, model)
             key_words.append(word)
             words = get_suggestions(capitalized, processed_fix_keywords, model)
             map_word_to_suggestions.append((word, words))
+    # print(map_word_to_suggestions)
 
     shuffled = []
     suggestions = [x[1] for x in map_word_to_suggestions]
     for suggestion in suggestions:
         shuffled.append(random.sample(suggestion, len(suggestion)))
     random_com = []
-    for i in range(10):
+    for i in range(K):
         this_com = [x[i] for x in shuffled]
         random_com.append(this_com)
 
     # suggestion_df = pd.DataFrame(map_word_to_suggestions)
-    suggestion_df = pd.DataFrame.from_items(map_word_to_suggestions)
-    df_html = suggestion_df.to_html(classes='table', escape=True, border=0, justify='center')
+    if len(map_word_to_suggestions) > 0:
+        suggestion_df = pd.DataFrame.from_items(map_word_to_suggestions)
+        df_html = suggestion_df.to_html(classes='table', escape=True, border=0, justify='center')
+    else:
+        df_html = None
     return key_words, df_html, random_com
 
 
