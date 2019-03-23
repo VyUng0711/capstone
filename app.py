@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 model = gensim.models.KeyedVectors.load_word2vec_format(config.MODEL, binary=True)
-# change_vocab(model)
+change_vocab(model)
 
 
 @app.errorhandler(401)
